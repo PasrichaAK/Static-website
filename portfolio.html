@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Cloud Intern</title>
+  
+</head>
+<body>
+  
+  <div class="sidebar">
+    <div class="logo_content">
+      <div class ="logo">
+        <i class='bx bxl-aws'></i>
+        <div class ="logo_name">Cloud Intern</div>
+      </div>
+      <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_li">
+      <li>
+        <i class='bx bx-search-alt' ></i>
+        <input type="text" placeholder="Search...">
+        <span class="tooltip">Search</span>
+      </li>
+      <li>
+        <a href="#"><i class='bx bx-grid-alt' ></i>
+        <span class="link_name">Dashboard</span></a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="#"><i class='bx bx-user' ></i>
+        <span class="link_name">User</span></a>
+        <span class="tooltip">User</span>
+      </li>
+      <li>
+        <a href="#"><i class='bx bx-label' ></i>
+        <span class="link_name">About Us</span></a>
+        <span class="tooltip">About Us</span>
+      </li>
+      <li>
+        <a href="#"><i class='bx bx-conversation' ></i>
+        <span class="link_name">Chat</span></a>
+        <span class="tooltip">Chat</span>
+      </li>
+      <li>
+        <a href="#"><i class='bx bx-book-content'></i>
+        <span class="link_name">Previous Work</span></a>
+        <span class="tooltip">Previous Work</span>
+      </li>
+      <li>
+        <a href="#"><i class='bx bx-phone' ></i>
+        <span class="link_name">Contact</span></a>
+        <span class="tooltip">Contact </span>
+      </li>
+    </ul>
+    
+  </div>
+
+  <div class="image-section">
+    <img id="image" src="Image1.jpg" alt="Image 1">
+
+  </div>
+
+  <div class="navigation">
+    
+    <button  onclick="previousImage()">Previous</button>
+    <button  onclick="nextImage()">Next</button>
+  </div>
+
+  <script>
+ 
+    var images = ["Image1.jpg", "Image2.jpg", "Image3.jpg", "Image4.jpg"];
+    var index = 0;
+    var imageElement = document.getElementById("image");
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    let searchBtn = document.querySelector(".bx-search-alt");
+
+    btn.onclick = function(){
+      sidebar.classList.toggle("active");
+    }
+
+    searchBtn.onclick = function(){
+      sidebar.classList.toggle("active");
+    }
+    function changeImage() {
+      imageElement.style.opacity = 0;
+      setTimeout(function() {
+        imageElement.src = images[index];
+        imageElement.style.opacity = 1;
+      }, 500); 
+    }
+
+    function nextImage() {
+      index = (index + 1) % images.length;
+      changeImage();
+    }
+
+    function previousImage() {
+      index = (index - 1 + images.length) % images.length;
+      changeImage();
+    }
+    setInterval(nextImage, 20000);  
+    
+  </script>
+</body>
+</html>
